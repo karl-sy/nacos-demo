@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nacos-provider
+spec:
+  selector:
+    matchLabels:
+      app: provider
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: provider
+    spec:
+      containers:
+        - name: provider
+          image: localhost:5001/provider:1.0.0
+          ports:
+            - containerPort: 18081
